@@ -22,30 +22,9 @@ const navLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const isScrolled = scrollPosition > 0;
-      setIsScrolled(isScrolled);
-    };
-
-    // Attach the event listener to the window on mount
-    window.addEventListener("scroll", handleScroll);
-
-    // Detach the event listener when the component is unmounted
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const navbarClassName = `py-3 mb-5 border-b-[1px] border-teal-300 flex items-center justify-between ${
-    isScrolled ? "fixed top-0 w-full bg-white shadow-md left-0 px-[5%]" : ""
-  }`;
 
   return (
-    <nav className={`${navbarClassName} overflow-x-hidden`}>
+    <nav className={`flex justify-between py-2 fixed top-0 left-0 bg-white w-full px-[5%]`}>
       <Link
         className="text-xl font-bold text-teal-900 hover:scale-105 duration-200"
         href={"/"}
