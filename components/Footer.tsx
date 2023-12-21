@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="border-t-2 border-gray-200 my-2 py-4 flex flex-col">
+    <div className="border-t-2 border-gray-200 my-5 py-4 flex flex-col">
       <Link className="text-xl font-bold text-teal-900 w-max" href={"/"}>
         <span className="text-3xl text-teal-400">C</span>ari{" "}
         <span className="text-3xl text-teal-400">K</span>erja
