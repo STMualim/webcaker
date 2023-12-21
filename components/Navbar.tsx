@@ -45,7 +45,7 @@ export default function Navbar() {
   }`;
 
   return (
-    <nav className={navbarClassName}>
+    <nav className={`${navbarClassName} overflow-x-hidden`}>
       <Link
         className="text-xl font-bold text-teal-900 hover:scale-105 duration-200"
         href={"/"}
