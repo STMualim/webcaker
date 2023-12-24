@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Job({ job }: { job: any }) {
   return (
-    <Link href={'/'} className="bg-gray-200 hover:bg-gray-100 duration-150 px-5 rounded-md mt-2 shadow-lg pt-4 mb-4 md:mb-0">
+    <Link href={'/'} className="bg-gray-200 hover:bg-gray-100 duration-150 px-5 rounded-md mt-2 block shadow-lg pt-4 mb-4 md:mb-0">
       <h1 className="text-2xl font-semibold mb-2 text-gray-900 lg:text-xl">
         {job.name}
       </h1>
