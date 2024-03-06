@@ -9,14 +9,17 @@ const navLinks = [
   {
     id: 1,
     name: "Contact",
+    href: "contact"
   },
   {
     id: 2,
     name: "Kerja Sama",
+    href: "kerja-sama"
   },
   {
-    id: 1,
+    id: 3,
     name: "Donasi",
+    href: "donasi"
   },
 ];
 
@@ -37,7 +40,7 @@ export default function Navbar() {
         {/* ipad & laptop */}
         <div className={`hidden md:flex items-center gap-4 md:mr-5 pt-2`}>
           {navLinks.map((link) => (
-            <Link className="text-base font-medium hover:scale-105 duration-200 hover:text-teal-500" key={link.id} href={"/"}>
+            <Link className="text-base font-medium hover:scale-105 duration-200 hover:text-teal-500" key={link.id} href={link.href}>
               {link.name}
             </Link>
           ))}
@@ -69,7 +72,7 @@ export default function Navbar() {
           <Link
             className="my-2 text-xl font-semibold hover-link"
             key={link.id}
-            href={"/"}
+            href={link.href}
           >
             {link.name}
           </Link>
