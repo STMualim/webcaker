@@ -3,15 +3,31 @@ import { RiVerifiedBadgeFill, RiShareFill } from "react-icons/ri";
 import { IoLocation } from "react-icons/io5";
 import Link from "next/link";
 
-export default function Job({ job }: { job: any }) {
+type JobProps = {
+  id: number;
+  name: string;
+  location: string;
+  company: string;
+  posted: string;
+  tags: string[];
+  deskripsi: string;
+}
+
+export default function Job({ job }: { job: JobProps }) {
   return (
-    <Link href={'/'} className="bg-gray-200 hover:bg-gray-100 duration-150 px-5 rounded-md mt-2 block shadow-lg pt-4 mb-4 md:mb-0">
+    <Link
+      href={`job/${job.id}`}
+      className="bg-gray-200 hover:bg-gray-100 duration-150 px-5 rounded-md mt-2 block shadow-lg pt-4 mb-4 md:mb-0"
+    >
       <h1 className="text-2xl font-semibold mb-2 text-gray-900 lg:text-xl">
         {job.name}
       </h1>
       <div className="flex gap-1">
         {job.tags.map((tag: string) => (
-          <span key={tag} className="text-xs bg-gray-300 rounded-full py-1 px-2 font-light lg:text-[10px]">
+          <span
+            key={tag}
+            className="text-xs bg-gray-300 rounded-full py-1 px-2 font-light lg:text-[10px]"
+          >
             {tag}
           </span>
         ))}
