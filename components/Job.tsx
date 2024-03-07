@@ -24,7 +24,7 @@ export default function Job({ job }: { job: JobProps }) {
           <div className="w-[64px] h-[64px] rounded-full bg-slate-300 me-3"></div>
           </div>
           <div className="w-8/12">
-            <h1 className="text-lg font-semibold mb-2 leading-2 text-gray-900 lg:text-xl">
+            <h1 className="text-base font-semibold mb-2 leading-2 text-gray-900 lg:text-xl">
               {job.name}
             </h1>
             <div className="flex gap-1">
