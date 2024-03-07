@@ -19,7 +19,7 @@ export default function Job({ job }: { job: JobProps }) {
   return (
     <div className="hover:bg-gray-50 duration-150 px-5 border-2 rounded-md mt-2 block shadow-lg pt-4 mb-4 md:mb-0">
       <Link href={`job/${job.id}`}>
-        <div className="flex">
+        <div className="flex gap-2">
           <div className="w-3/12">
           <div className="w-[64px] h-[64px] rounded-full bg-slate-300 me-3"></div>
           </div>
