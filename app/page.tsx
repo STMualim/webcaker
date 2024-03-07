@@ -13,11 +13,21 @@ export default function Home() {
   const [jobsData, setJobsData] = useState([]);
 
   useEffect(() => {
-    const filteredJobs: any = jobs.filter((job) =>
-      job.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setJobsData(filteredJobs);
+    // Simpan referensi timeout sebagai variabel di luar useEffect
+    let timeoutId: any;
+  
+    // Lakukan debounce dengan setTimeout
+    timeoutId = setTimeout(() => {
+      const filteredJobs: any = jobs.filter((job: any) =>
+        job.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setJobsData(filteredJobs);
+    }, 200);
+  
+    // Cleanup: Hapus timeout sebelum membuat yang baru
+    return () => clearTimeout(timeoutId);
   }, [searchQuery]);
+  
 
   return (
     <main className="pt-16">
@@ -27,7 +37,7 @@ export default function Home() {
         <div>
           <p className="text-xl mt-5 font-semibold">Pekerjaan Terbaru 🚀</p>
           <div className="md:grid-cols-2 md:grid lg:grid-cols-3 md:gap-4">
-            {jobs.map((job) => (
+            {jobs.map((job: any) => (
               <Job key={job.id} job={job} />
             ))}
           </div>
