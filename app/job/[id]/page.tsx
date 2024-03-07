@@ -58,11 +58,11 @@ const JobDetailPage = () => {
           </div>
           <div className="text-sm mt-5">
             <h3 className="font-bold mb-1 text-lg">DESCRIPTION JOB :</h3>
-            <p className="lg:w-10/12 text-lg">{job.description}</p>
+            <p className="lg:w-10/12 text-base">{job.description}</p>
           </div>
           <div className="text-sm mt-5">
             <h3 className="font-bold mb-1 text-lg">REQUIREMENT :</h3>
-            <ul className="list-disc ms-5 text-lg">
+            <ul className="list-disc ms-5 text-base">
               {job.requirement.map((list) => (
                 <li key={list}>{list}</li>
               ))}
