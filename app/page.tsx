@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <main className="pt-16">
       {currentPage > 1 ? null : <Banner />}
-      <Filter searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <Filter jobs={jobs} setJobsData={setJobsData} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <div className="text-xl mt-5 font-semibold">Pekerjaan Terbaru 🚀</div>
       {loading ? (
         <div className="md:grid-cols-2 md:grid lg:grid-cols-3 md:gap-4 mt-4">

@@ -21,7 +21,7 @@ export default function Job({ job }: { job: JobProps }) {
       <Link href={`job/${job.id}`}>
         <div className="flex gap-2">
           <div className="w-3/12">
-          <div className="w-[64px] h-[64px] rounded-full bg-slate-300 me-3"></div>
+          <div className="w-[60px] h-[60px] rounded-full bg-slate-100 me-3 flex justify-center items-center lg:text-2xl text-xl text-teal-500 font-bold">{job.name.slice(0, 1)}</div>
           </div>
           <div className="w-8/12">
             <h1 className="text-base font-semibold mb-2 leading-2 text-gray-900 lg:text-xl">

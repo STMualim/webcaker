@@ -27,7 +27,7 @@ export default function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <nav className={`flex justify-between py-2 fixed top-0 left-0 bg-white w-full px-[5%] shadow-sm md:shadow-none md:px-[10%]`}>
+    <nav className={`flex justify-between py-2 fixed top-0 left-0 bg-white w-full px-[5%] shadow-sm md:shadow-none md:px-[10%] z-50`}>
       <Link
         className="text-xl font-bold text-teal-900 hover:scale-105 duration-200"
         href={"/"}

@@ -1,16 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
+import cities from "@/data/cities";
+import dynamic from "next/dynamic";
+
+const Select = dynamic(() => import("react-select"));
 
 export default function Filter({
   searchQuery,
   setSearchQuery,
+  setJobsData,
+  jobs,
 }: {
   searchQuery: string;
   setSearchQuery: any;
+  setJobsData: any;
+  jobs: any;
 }) {
   const handleChange = (value: string) => {
     setSearchQuery(value);
   };
+
+  const [valueCity, setValueCity] = useState("");
+
+  useEffect(() => {
+    if (valueCity == "all") {
+      setJobsData(jobs);
+    } else {
+      const filteredData = jobs.filter((job: any) =>
+        job.location
+          .toLowerCase()
+          .includes(valueCity.split("-").join().toLowerCase())
+      );
+      setJobsData(filteredData);
+    }
+  }, [valueCity]);
 
   return (
     <div className="mt-4">
@@ -20,44 +43,21 @@ export default function Filter({
           value={searchQuery}
           className="w-full text-base border-none outline-none"
           type="text"
-          placeholder="Search job..."
+          placeholder="Cari ..."
         />
         <IoSearch className="cursor-pointer" size={25} />
       </div>
       {/* dropdown 1 */}
-      <fieldset className="mt-3 overflow-x-scroll pb-2 flex flex-row gap-3 md:overflow-x-auto">
-        <legend className="font-semibold">Filter</legend>
-        <select
-          name="city"
-          id="city"
-          className="mt-2 p-2 text-sm md:text-base border-2 rounded-md"
-        >
-          <option value="all">Kota</option>
-          <option value="jakarta">Jakarta</option>
-          <option value="bandung">Bandung</option>
-          <option value="bekasi">Bekasi</option>
-          <option value="tangerang">Tangerang</option>
-        </select>
-        <select
-          name="city"
-          id="city"
-          className="mt-2 p-2 text-sm md:text-base border-2 rounded-md"
-        >
-          <option value="jakarta">Relevan</option>
-          <option value="jakarta">Baru</option>
-          <option value="bandung">Remote</option>
-        </select>
-        <select
-          name="city"
-          id="city"
-          className="mt-2 p-2 text-sm md:text-base border-2 rounded-md"
-        >
-          <option value="jakarta">Experience</option>
-          <option value="bandung">Senior</option>
-          <option value="bekasi">Middle</option>
-          <option value="tangerang">Junior</option>
-        </select>
-      </fieldset>
+      <div className="mt-2">
+        <Select
+          defaultValue={valueCity}
+          onChange={(e: any) => setValueCity(e.value)}
+          id="kota"
+          className="lg:w-3/12"
+          placeholder="Cari Kota"
+          options={cities}
+        />
+      </div>
     </div>
   );
 }

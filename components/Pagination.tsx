@@ -21,7 +21,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange } : P
       <div className="flex justify-center mt-5">
         {currentPage > 1 && (
           <button
-            className="mx-2 px-3 py-1 border border-gray-300 rounded-md"
+            className="mx-2 px-3 py-1 border border-gray-300 rounded-md text-xs"
             onClick={() => onPageChange(currentPage - 1)}
           >
             Prev
@@ -30,7 +30,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange } : P
         {pages.map((pageNumber) => (
           <button
             key={pageNumber}
-            className={`mx-1 px-3 py-1 border border-gray-300 rounded-md ${
+            className={`mx-1 px-3 py-1 border border-gray-300 rounded-md text-xs ${
               currentPage === pageNumber ? "bg-blue-500 text-white" : ""
             }`}
             onClick={() => onPageChange(pageNumber)}
@@ -40,7 +40,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange } : P
         ))}
         {currentPage < totalPages && (
           <button
-            className="mx-2 px-3 py-1 border border-gray-300 rounded-md"
+            className="mx-2 px-3 py-1 border border-gray-300 rounded-md text-xs"
             onClick={() => onPageChange(currentPage + 1)}
           >
             Next
