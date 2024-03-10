@@ -21,7 +21,7 @@ const JobDetailPage = () => {
   const [job, setJob] = useState<JobProps>();
 
   useEffect(() => {
-    const findedData: any = data.find((data) => data.id === Number(id));
+    const findedData: any = data.find((data) => data.id === id);
     setJob(findedData);
   }, []);
 

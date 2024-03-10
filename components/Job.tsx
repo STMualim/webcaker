@@ -24,13 +24,13 @@ export default function Job({ job }: { job: JobProps }) {
           <div className="w-[60px] h-[60px] rounded-full bg-slate-100 me-3 flex justify-center items-center lg:text-2xl text-xl text-teal-500 font-bold">{job.name.slice(0, 1)}</div>
           </div>
           <div className="w-8/12">
-            <h1 className="text-base font-semibold mb-2 leading-2 text-gray-900 lg:text-xl">
+            <h1 className="text-base font-semibold mb-2 line-clamp-2 leading-2 text-gray-900 lg:text-xl">
               {job.name}
             </h1>
             <div className="flex gap-1">
-              {job.tags.map((tag: string) => (
+              {job.tags.map((tag: string, index: number) => (
                 <span
-                  key={tag}
+                  key={index}
                   className="text-xs bg-gray-100 text-blue-500 rounded-md py-0 px-2 font-medium lg:text-xs"
                 >
                   {tag}
