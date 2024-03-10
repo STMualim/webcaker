@@ -1,5 +1,5 @@
 const cities = [
-  { value: "all", label: "All" },
+  { value: "all", label: "all" },
   { value: "Jakarta", label: "Jakarta" },
   { value: "Bandung", label: "Bandung" },
   { value: "Surabaya", label: "Surabaya" },

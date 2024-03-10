@@ -1,5 +1,5 @@
-"use client";
-import React, { Suspense, useEffect, useState } from "react";
+'use client'
+import React, { useEffect, useState } from "react";
 import Banner from "@/components/Banner";
 import Job from "@/components/Job";
 import Filter from "@/components/Filter";
@@ -17,44 +17,66 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const startIdx = (currentPage - 1) * jobsPerPage;
   const endIdx = currentPage * jobsPerPage;
+  const [city, setCity] = useState("all");
 
   useEffect(() => {
     setLoading(true);
-    let timeoutId: any;
-    timeoutId = setTimeout(() => {
-      const filteredJobs: any = jobs.filter((job) =>
-        job.name.toLowerCase().includes(searchQuery.toLowerCase())
+    const delayDebounceFn = setTimeout(() => {
+      filterJobs();
+    }, 300);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchQuery, city, currentPage]);
+
+  const filterJobs = () => {
+    let filteredJobs: any = jobs;
+
+    // Filter berdasarkan kota
+    if (city !== "all") {
+      filteredJobs = filteredJobs.filter((job: any) =>
+        job.location.toLowerCase().includes(city.toLowerCase())
       );
-      setJobsData(filteredJobs);
-      setLoading(false);
-    }, 200);
+    }
 
-    return () => clearTimeout(timeoutId);
-  }, [searchQuery]);
+    // Filter berdasarkan pencarian
+    filteredJobs = filteredJobs.filter((job: any) =>
+      job.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
-  const handleChangePage = (newPage: any) => {
+    setJobsData(filteredJobs);
+    setLoading(false);
+  };
+
+  const handleChangePage = (newPage: number) => {
     setLoading(true);
-    window.location.href = `/?page=${newPage}`;
+    window.history.pushState({}, "", `/?page=${newPage}`);
   };
 
   return (
     <main className="pt-16">
-      {currentPage > 1 ? null : <Banner />}
-      <Filter jobs={jobs} setJobsData={setJobsData} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      {currentPage === 1 && <Banner />}
+      <Filter
+        city={city}
+        setCity={setCity}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
       <div className="text-xl mt-5 font-semibold">Pekerjaan Terbaru 🚀</div>
       {loading ? (
         <div className="md:grid-cols-2 md:grid lg:grid-cols-3 md:gap-4 mt-4">
-          {Array.from("123456").map((index) => (
+          {Array.from({ length: jobsPerPage }).map((_, index) => (
             <Skeleton key={index} />
           ))}
         </div>
       ) : (
         <div className="md:grid-cols-2 md:grid lg:grid-cols-3 md:gap-4 mt-4">
-          {searchQuery != ""
-            ? jobsData.map((job: any) => <Job key={job.id} job={job} />)
-            : jobsData
-                .slice(startIdx, endIdx)
-                .map((job: any) => <Job key={job.id} job={job} />)}
+          {jobsData.length > 0 ? (
+            jobsData.slice(startIdx, endIdx).map((job: any) => (
+              <Job key={job.id} job={job} />
+            ))
+          ) : (
+            <div className="text-center text-gray-600">Tidak ada pekerjaan yang ditemukan.</div>
+          )}
         </div>
       )}
       <Pagination
