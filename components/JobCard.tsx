@@ -3,19 +3,11 @@ import { RiVerifiedBadgeFill, RiShareFill } from "react-icons/ri";
 import { IoLocation } from "react-icons/io5";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import Link from "next/link";
+import { Job } from "@/app/definitions";
+import { formattedCurrency } from "@/utils/formatCurrency";
+import { formattedDate } from "@/utils/formattedDate";
 
-type JobProps = {
-  id: number;
-  name: string;
-  location: string;
-  company: string;
-  posted: string;
-  tags: string[];
-  requirement: string[];
-  description: string;
-};
-
-export default function Job({ job }: { job: JobProps }) {
+export default function JobCard({ job }: { job: Job }) {
   return (
     <div className="hover:bg-gray-50 duration-150 px-5 border-2 rounded-md mt-2 block shadow-lg pt-4 mb-4 md:mb-0">
       <Link href={`job/${job.id}`}>
@@ -48,12 +40,12 @@ export default function Job({ job }: { job: JobProps }) {
           <h2 className="text-sm">{job.location}</h2>
         </div>
         <div className="flex items-center gap-2 text-gray-700 font-medium">
-          <MdOutlineAttachMoney size={20} color={"#4a5568"} />
-          <h2 className="text-sm">$20.000 - 40.000 / Month</h2>
+          <span className="text-sm">Rp. </span>
+          <h2 className="text-sm">{formattedCurrency(job.salary)}</h2>
         </div>
       </Link>
       <div className="mt-4 border-t-2 border-gray-300 flex items-center justify-between py-2">
-        <p className="text-sm text-gray-500 lg:text-xs">{job.posted}</p>
+        <p className="text-sm text-gray-500 lg:text-xs">{formattedDate(job.posted)}</p>
         <div className="hover-icon">
           <RiShareFill color={"#4a5568"} size={20} />
         </div>

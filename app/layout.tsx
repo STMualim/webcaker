@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const inter = Inter({ subsets: ["latin"] });
+import { poppins } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Cari Kerja App",
@@ -18,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} px-[5%] md:px-[8%] lg:px-[10%]`}>
+      <body className={`${poppins.className} px-[5%] md:px-[8%] lg:px-[10%]`}>
         <Navbar />
         {children}
         <Footer />

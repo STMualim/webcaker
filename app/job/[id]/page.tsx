@@ -1,29 +1,16 @@
 "use client";
 import { useParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import data from "@/data/jobs";
+import React from "react";
 import { IoLocation, IoTime, IoArrowBack } from "react-icons/io5";
 import Link from "next/link";
+import { getJobById } from "@/utils/getJobById";
+import { Job } from "@/app/definitions";
+import { formattedDate } from "@/utils/formattedDate";
+import { formattedCurrency } from "@/utils/formatCurrency";
 
-type JobProps = {
-  id: number;
-  name: string;
-  location: string;
-  company: string;
-  posted: string;
-  tags: string[];
-  requirement: string[];
-  description: string;
-};
-
-const JobDetailPage = () => {
+const JobDetailPage = async () => {
   const { id } = useParams();
-  const [job, setJob] = useState<JobProps>();
-
-  useEffect(() => {
-    const findedData: any = data.find((data) => data.id === id);
-    setJob(findedData);
-  }, []);
+  const job: Job | undefined = await getJobById(id.toString())
 
   return (
     <main className="pt-20">
@@ -43,7 +30,7 @@ const JobDetailPage = () => {
             </div>
             <div className="flex gap-1 items-center">
               <IoTime className="text-teal-500" />
-              <span>{job.posted}</span>
+              <span>{formattedDate(job.posted)}</span>
             </div>
           </div>
           <div className="flex gap-1 mt-3">
@@ -57,8 +44,12 @@ const JobDetailPage = () => {
             ))}
           </div>
           <div className="text-sm mt-5">
+            <h3 className="font-bold mb-1 text-lg">SALARY / GAJI :</h3>
+            <p className="lg:w-10/12 text-base">Rp. {formattedCurrency(job.salary)}</p>
+          </div>
+          <div className="text-sm mt-5">
             <h3 className="font-bold mb-1 text-lg">DESCRIPTION JOB :</h3>
-            <p className="lg:w-10/12 text-base">{job.description}</p>
+            <p className="lg:w-10/12 text-base">{job.description + job.description}</p>
           </div>
           <div className="text-sm mt-5">
             <h3 className="font-bold mb-1 text-lg">REQUIREMENT :</h3>

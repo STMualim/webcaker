@@ -7,11 +7,6 @@ import { IoMdClose } from "react-icons/io";
 
 const navLinks = [
   {
-    id: 1,
-    name: "Contact",
-    href: "contact"
-  },
-  {
     id: 2,
     name: "Kerja Sama",
     href: "kerja-sama"

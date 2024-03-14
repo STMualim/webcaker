@@ -1,4 +1,7 @@
-const jobs = [
+import { Job } from "@/app/definitions";
+
+
+const jobs: Job[] = [
   {
     id: "3bbcbcbb-883b-4132-be23-03caa73009f1",
     name: "Human Accounts Producer",
