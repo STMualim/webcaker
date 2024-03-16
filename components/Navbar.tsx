@@ -3,51 +3,43 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { HiMenu, HiMoon } from "react-icons/hi";
-import { IoMdClose } from "react-icons/io";
-
-const navLinks = [
-  {
-    id: 2,
-    name: "Kerja Sama",
-    href: "kerja-sama"
-  },
-  {
-    id: 3,
-    name: "Donasi",
-    href: "donasi"
-  },
-];
+import { navLinks } from "@/data/links";
+import { NavLink } from "@/app/definitions";
+import { usePathname } from "next/navigation";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
+  const pathname = usePathname();
 
   return (
-    <nav className={`flex justify-between py-2 fixed top-0 left-0 bg-white w-full px-[5%] shadow-sm md:shadow-none md:px-[10%] z-50`}>
-      <Link
-        className="text-xl font-bold text-teal-900 hover:scale-105 duration-200"
-        href={"/"}
-      >
-        <span className="text-3xl text-teal-400 lg:text-4xl">C</span>ari{" "}
-        <span className="text-3xl text-teal-400 lg:text-4xl">K</span>erja
-      </Link>
-
+    <nav
+      className={`flex justify-between items-center py-3 fixed top-0 left-0 bg-white w-full px-[5%] shadow-sm md:shadow-none md:px-[10%] z-50`}
+    >
+      <Logo />
       <div className="flex items-center gap-2">
         {/* ipad & laptop */}
-        <div className={`hidden md:flex items-center gap-4 md:mr-5 pt-2`}>
-          {navLinks.map((link) => (
-            <Link className="text-base font-medium hover:scale-105 duration-200 hover:text-teal-500" key={link.id} href={link.href}>
-              {link.name}
-            </Link>
-          ))}
-        </div>
-        <div className="hover-icon">
-          <HiMoon size={28} />
+        <div className={`hidden md:flex items-center gap-4`}>
+          {navLinks.map((link: NavLink) => {
+            const active = pathname === link.href;
+            return (
+              <Link
+                className={` ${
+                  active ? "font-bold text-teal-500" : "font-normal"
+                } text-base hover:scale-105 duration-200 hover:text-teal-500 text-gray-800`}
+                key={link.id}
+                href={link.href}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
         </div>
         <div
           className="hover-icon duration-200 md:hidden"
           onClick={() => setOpen(!open)}
         >
-          <HiMenu size={28} />
+          <HiMenu size={25} />
         </div>
       </div>
 
@@ -66,7 +58,7 @@ export default function Navbar() {
         {navLinks.map((link) => (
           <Link
             className="my-2 text-xl font-semibold hover-link"
-            key={link.id}
+            key={link.href}
             href={link.href}
           >
             {link.name}

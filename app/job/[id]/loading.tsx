@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Loading() {
   return (
-    <div className="">
+    <div className="mt-20">
       <div className="h-5 bg-gray-300 rounded w-[60px] mb-6"></div>
       <div className="h-10 bg-gray-300 rounded w-4/12 mb-2"></div>
       <div className="flex gap-2 mt-4">

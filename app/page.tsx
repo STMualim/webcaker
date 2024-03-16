@@ -17,7 +17,7 @@ export default function Home({
   return (
     <main className="pt-16">
       <Search placeholders={query} />
-      {searchParams.page && searchParams.query ? "" : <Banner />}
+      {searchParams.page || searchParams.query ? "" : <Banner />}
       <div className="text-xl mt-5 font-semibold">Pekerjaan Terbaru 🚀</div>
       <Suspense key={currentPage} fallback={<Skeleton />}>
         <JobsList query={query} currentPage={currentPage} />

@@ -26,7 +26,7 @@ export default function Search({ placeholders }: SearchProps) {
 
   return (
     <div className="mt-2 mb-3 lg:w-6/12">
-      <div className="border-2 flex p-2 items-center rounded-md">
+      <div className="border-2 flex py-1 px-2 items-center rounded-md">
         <input
           defaultValue={searchParams.get("query")?.toString()}
           onChange={(e) => handleChange(e.target.value)}

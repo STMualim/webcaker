@@ -11,10 +11,10 @@ export default function Banner() {
           priority
           src={banner}
           alt="banner"
-          className="h-full w-full object-contain"
+          className="h-full w-full object-cover"
         />
       </div>
-      <div className="bg-gray-300 hidden md:block lg:w-4/12 rounded-md h-48 mb-2 lg:h-[400px] overflow-hidden shadow">
+      <div className="bg-gray-300 hidden md:flex items-center justify-center lg:w-4/12 rounded-md h-48 mb-2 lg:h-[400px] overflow-hidden shadow">
         Sponsored
       </div>
     </div>
