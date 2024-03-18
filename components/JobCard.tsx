@@ -3,9 +3,9 @@ import { RiVerifiedBadgeFill, RiShareFill } from "react-icons/ri";
 import { IoLocation } from "react-icons/io5";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import Link from "next/link";
-import { Job } from "@/app/definitions";
 import { formattedCurrency } from "@/utils/formatCurrency";
 import { formattedDate } from "@/utils/formattedDate";
+import { Job } from "@/types/job";
 
 export default function JobCard({ job }: { job: Job }) {
   return (

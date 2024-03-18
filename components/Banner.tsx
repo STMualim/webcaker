@@ -2,20 +2,18 @@ import React from "react";
 import Image from "next/image";
 
 import banner from "@/assets/banner.webp";
+import { AspectRatio } from "./ui/aspect-ratio";
 
 export default function Banner() {
   return (
-    <div className="lg:flex justify-between gap-4">
-      <div className="bg-gray-300 lg:w-8/12 rounded-md h-48 mb-2 lg:h-[400px] overflow-hidden shadow">
-        <Image
-          priority
-          src={banner}
-          alt="banner"
-          className="h-full w-full object-cover"
-        />
+    <div className="flex gap-2">
+      <div className="lg:w-8/12 w-full">
+        <AspectRatio ratio={16 / 8}>
+          <Image src={banner} alt="Image" className="rounded-md object-cover shadow-md" />
+        </AspectRatio>
       </div>
-      <div className="bg-gray-300 hidden md:flex items-center justify-center lg:w-4/12 rounded-md h-48 mb-2 lg:h-[400px] overflow-hidden shadow">
-        Sponsored
+      <div className="w-4/12 hidden md:block">
+        <div className="bg-gray-200 h-full rounded-md shadow flex items-center justify-center">sponsored</div>
       </div>
     </div>
   );

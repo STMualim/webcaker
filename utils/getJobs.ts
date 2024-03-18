@@ -1,5 +1,5 @@
-import { Job } from "@/app/definitions";
 import jobs from "@/data/jobs";
+import { Job } from "@/types/job";
 
 // data per halaman
 const PAGE_SIZE = 9;

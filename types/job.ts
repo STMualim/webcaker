@@ -9,9 +9,3 @@ export type Job = {
     requirement: string[]
     description: string
 }
-
-export type NavLink = {
-    id: number;
-    name: string;
-    href: string;
-}

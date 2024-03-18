@@ -1,10 +1,11 @@
-'use client'
+"use client";
 import React, { Suspense } from "react";
 import Banner from "@/components/Banner";
 import Skeleton from "@/components/Skeleton";
-import Pagination from "@/components/Pagination";
 import JobsList from "@/components/JobsList";
 import Search from "@/components/Search";
+import PaginationComp from "@/components/PaginationComp";
+import JobsByType, {  } from "@/components/JobsByType";
 
 export default function Home({
   searchParams,
@@ -12,17 +13,19 @@ export default function Home({
   searchParams: { page?: string | number; query?: string };
 }) {
   const currentPage = Number(searchParams?.page || 1);
-  const query = searchParams?.query || ''
+  const query = searchParams?.query || "";
 
   return (
     <main className="pt-16">
-      <Search placeholders={query} />
       {searchParams.page || searchParams.query ? "" : <Banner />}
-      <div className="text-xl mt-5 font-semibold">Pekerjaan Terbaru 🚀</div>
+      <div className="lg:flex gap-3">
+        <Search placeholders={query} />
+        <JobsByType />
+      </div>
       <Suspense key={currentPage} fallback={<Skeleton />}>
         <JobsList query={query} currentPage={currentPage} />
       </Suspense>
-      <Pagination currentPage={currentPage} />
+      <PaginationComp currentPage={currentPage} />
     </main>
   );
 }
