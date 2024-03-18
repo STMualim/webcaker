@@ -6,6 +6,7 @@ import JobsList from "@/components/JobsList";
 import Search from "@/components/Search";
 import PaginationComp from "@/components/PaginationComp";
 import JobsByType, {  } from "@/components/JobsByType";
+import JobsBySalary from "@/components/JobBySalary";
 
 export default function Home({
   searchParams,
@@ -21,6 +22,7 @@ export default function Home({
       <div className="lg:flex gap-3">
         <Search placeholders={query} />
         <JobsByType />
+        <JobsBySalary />
       </div>
       <Suspense key={currentPage} fallback={<Skeleton />}>
         <JobsList query={query} currentPage={currentPage} />

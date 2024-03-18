@@ -1,12 +1,12 @@
 "use client";
 import { useParams } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 import { IoLocation, IoTime, IoArrowBack } from "react-icons/io5";
 import Link from "next/link";
 import { getJobById } from "@/utils/getJobById";
-import { Job } from "@/app/definitions";
 import { formattedDate } from "@/utils/formattedDate";
 import { formattedCurrency } from "@/utils/formatCurrency";
+import { Job } from "@/types/job";
 
 const JobDetailPage = async () => {
   const { id } = useParams();
@@ -45,11 +45,15 @@ const JobDetailPage = async () => {
           </div>
           <div className="text-sm mt-5">
             <h3 className="font-bold mb-1 text-lg">SALARY / GAJI :</h3>
-            <p className="lg:w-10/12 text-base">Rp. {formattedCurrency(job.salary)}</p>
+            <p className="lg:w-10/12 text-base">
+              Rp. {formattedCurrency(job.salary)}
+            </p>
           </div>
           <div className="text-sm mt-5">
             <h3 className="font-bold mb-1 text-lg">DESCRIPTION JOB :</h3>
-            <p className="lg:w-10/12 text-base">{job.description + job.description}</p>
+            <p className="lg:w-10/12 text-base">
+              {job.description + job.description}
+            </p>
           </div>
           <div className="text-sm mt-5">
             <h3 className="font-bold mb-1 text-lg">REQUIREMENT :</h3>
@@ -80,7 +84,10 @@ const JobDetailPage = async () => {
             </h3>
             <p className="text-base">
               Hati-hati Jangan berikan detail bank atau kartu kredit kamu saat
-              mengirimkan lamaran kerja. <Link href={'#'} className="underline">Pelajari cara melindungi diri kamu</Link>
+              mengirimkan lamaran kerja.{" "}
+              <Link href={"#"} className="underline">
+                Pelajari cara melindungi diri kamu
+              </Link>
             </p>
           </div>
         </div>

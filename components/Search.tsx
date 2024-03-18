@@ -27,7 +27,7 @@ export default function Search({ placeholders }: SearchProps) {
   }, 300);
 
   return (
-    <div className="flex w-full max-w-md items-center space-x-2 my-4">
+    <div className="flex w-full max-w-xs items-center space-x-2 my-4">
       <Input
         className="outline-none"
         type="text"
@@ -35,9 +35,6 @@ export default function Search({ placeholders }: SearchProps) {
         defaultValue={searchParams.get("query")?.toString()}
         onChange={(e) => handleChange(e.target.value)}
       />
-      <Button size="sm">
-        <IoSearch size={18} />
-      </Button>
     </div>
   );
 }

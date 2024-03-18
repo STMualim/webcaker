@@ -10,7 +10,7 @@ import { Job } from "@/types/job";
 export default function JobCard({ job }: { job: Job }) {
   return (
     <div className="hover:bg-gray-50 duration-150 px-5 border-2 rounded-md mt-2 block shadow-lg pt-4 mb-4 md:mb-0">
-      <Link href={`job/${job.id}`}>
+      <Link scroll href={`job/${job.id}`}>
         <div className="flex gap-2">
           <div className="w-3/12">
           <div className="w-[60px] h-[60px] rounded-full bg-slate-100 me-3 flex justify-center items-center lg:text-2xl text-xl text-teal-500 font-bold">{job.name.slice(0, 1)}</div>
