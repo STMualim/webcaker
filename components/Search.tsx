@@ -1,15 +1,9 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { IoSearch } from "react-icons/io5";
 import { useDebouncedCallback } from "use-debounce";
 import { Input } from "./ui/input";
-import { Button } from "./ui/button";
 
-type SearchProps = {
-  placeholders: string;
-};
-
-export default function Search({ placeholders }: SearchProps) {
+export default function Search() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -29,7 +23,6 @@ export default function Search({ placeholders }: SearchProps) {
   return (
     <div className="flex w-full max-w-xs items-center space-x-2 my-4">
       <Input
-        className="outline-none"
         type="text"
         placeholder="Search..."
         defaultValue={searchParams.get("query")?.toString()}

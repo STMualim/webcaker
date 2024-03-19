@@ -20,7 +20,7 @@ export default function Home({
     <main className="pt-16">
       {searchParams.page || searchParams.query ? "" : <Banner />}
       <div className="lg:flex gap-3">
-        <Search placeholders={query} />
+        <Search />
         <JobsByType />
         <JobsBySalary />
       </div>

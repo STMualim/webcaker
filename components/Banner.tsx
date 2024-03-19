@@ -9,7 +9,7 @@ export default function Banner() {
     <div className="flex gap-2">
       <div className="lg:w-8/12 w-full">
         <AspectRatio ratio={16 / 8}>
-          <Image src={banner} alt="Image" className="rounded-md object-cover shadow-md" />
+          <Image src={banner} alt="Image" priority className="rounded-md object-cover shadow-md" />
         </AspectRatio>
       </div>
       <div className="w-4/12 hidden md:block">

@@ -1,4 +1,5 @@
-import { Job } from "@/app/definitions";
+import { Job } from "@/types/job";
+
 
 
 const jobs: Job[] = [

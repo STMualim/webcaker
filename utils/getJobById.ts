@@ -1,5 +1,6 @@
-import { Job } from "@/app/definitions";
+
 import jobs from "@/data/jobs";
+import { Job } from "@/types/job";
 
 export function getJobById(id: string) {
   return new Promise<Job | undefined>((resolve) => {
