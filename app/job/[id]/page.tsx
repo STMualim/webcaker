@@ -1,6 +1,6 @@
 "use client";
+import React from "react";
 import { useParams } from "next/navigation";
-import React, { useEffect } from "react";
 import { IoLocation, IoTime, IoArrowBack } from "react-icons/io5";
 import Link from "next/link";
 import { getJobById } from "@/utils/getJobById";

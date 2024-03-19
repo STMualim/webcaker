@@ -5,19 +5,20 @@ import { Job } from "@/types/job";
 const PAGE_SIZE = 9;
 
 export function getJobs(page: number, query?: string) {
-  return new Promise<Job[]>((resolve) => {
-    setTimeout(() => {
-      let startIndex = (page - 1) * PAGE_SIZE;
-      let endIndex = startIndex + PAGE_SIZE; // Menggunakan PAGE_SIZE langsung
+  let startIndex = (page - 1) * PAGE_SIZE;
+  let endIndex = startIndex + PAGE_SIZE; // Menggunakan PAGE_SIZE langsung
 
-      if(query){
-        const filteredData: Job[] = jobs.filter((job: Job) => (job.name + job.location).toString().toLowerCase().includes(query.toLowerCase()))
-        const datas: Job[] = filteredData.slice(startIndex, endIndex);
-        resolve(datas);
-      } else {
-        const datas: Job[] = jobs.slice(startIndex, endIndex);
-        resolve(datas);
-      }
-    }, 300);
-  });
+  if (query) {
+    const filteredData: Job[] = jobs.filter((job: Job) =>
+      (job.name + job.location)
+        .toString()
+        .toLowerCase()
+        .includes(query.toLowerCase())
+    );
+    const datas: Job[] = filteredData.slice(startIndex, endIndex);
+    return datas;
+  } else {
+    const datas: Job[] = jobs.slice(startIndex, endIndex);
+    return datas;
+  }
 }
