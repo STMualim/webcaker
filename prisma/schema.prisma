@@ -18,7 +18,7 @@ model Job {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   location    String
-  salary      Int
+  salary      String
   company     String
   posted      String
   tags        String[]

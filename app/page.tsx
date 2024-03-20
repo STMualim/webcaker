@@ -5,8 +5,9 @@ import Skeleton from "@/components/Skeleton";
 import JobsList from "@/components/JobsList";
 import Search from "@/components/Search";
 import PaginationComp from "@/components/PaginationComp";
-import JobsByType, {  } from "@/components/JobsByType";
+import JobsByType from "@/components/JobsByType";
 import JobsBySalary from "@/components/JobBySalary";
+
 
 export default function Home({
   searchParams,
@@ -24,7 +25,7 @@ export default function Home({
         <JobsByType />
         <JobsBySalary />
       </div>
-      <Suspense key={currentPage} fallback={<Skeleton />}>
+      <Suspense key={query + currentPage}  fallback={<Skeleton />}>
         <JobsList query={query} currentPage={currentPage} />
       </Suspense>
       <PaginationComp currentPage={currentPage} />
