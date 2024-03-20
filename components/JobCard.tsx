@@ -1,11 +1,12 @@
 import React from "react";
 import { RiVerifiedBadgeFill, RiShareFill } from "react-icons/ri";
 import { IoLocation } from "react-icons/io5";
-import { MdOutlineAttachMoney } from "react-icons/md";
 import Link from "next/link";
 import { formattedCurrency } from "@/utils/formatCurrency";
 import { formattedDate } from "@/utils/formattedDate";
 import { Job } from "@/types/job";
+import { WhatsappIcon, WhatsappShareButton } from "react-share";
+import ShareButtons from "./ShareButtons";
 
 export default function JobCard({ job }: { job: Job }) {
   return (
@@ -13,7 +14,9 @@ export default function JobCard({ job }: { job: Job }) {
       <Link scroll href={`job/${job.id}`}>
         <div className="flex gap-2">
           <div className="w-3/12">
-          <div className="w-[60px] h-[60px] rounded-full bg-slate-100 me-3 flex justify-center items-center lg:text-2xl text-xl text-teal-500 font-bold">{job.name.slice(0, 1)}</div>
+            <div className="w-[60px] h-[60px] rounded-full bg-slate-100 me-3 flex justify-center items-center lg:text-2xl text-xl text-teal-500 font-bold">
+              {job.name.slice(0, 1)}
+            </div>
           </div>
           <div className="w-8/12">
             <h1 className="text-base font-semibold mb-2 line-clamp-2 leading-2 text-gray-900 lg:text-xl">
@@ -45,10 +48,10 @@ export default function JobCard({ job }: { job: Job }) {
         </div>
       </Link>
       <div className="mt-4 border-t-2 border-gray-300 flex items-center justify-between py-2">
-        <p className="text-sm text-gray-500 lg:text-xs">{formattedDate(job.posted)}</p>
-        <div className="hover-icon">
-          <RiShareFill color={"#4a5568"} size={20} />
-        </div>
+        <p className="text-sm text-gray-500 lg:text-xs">
+          {formattedDate(job.posted)}
+        </p>
+        <ShareButtons title={job.name} id={job.id} />
       </div>
     </div>
   );

@@ -1,9 +1,9 @@
-
+const BASE_URL_API = process.env.BASE_URL_API
 
 export async function getJobs(page: number, query?: string) {
   try {
     const res = await fetch(
-      `http://localhost:3000/api/jobs?page=${page}&query=${query}`
+      `${BASE_URL_API}/jobs?page=${page}&query=${query}`
     );
     return res.json();
   } catch (error) {
