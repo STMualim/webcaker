@@ -1,4 +1,3 @@
-"use client";
 import React, { Suspense } from "react";
 import Banner from "@/components/Banner";
 import Skeleton from "@/components/Skeleton";

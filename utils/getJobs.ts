@@ -1,24 +1,12 @@
-import jobs from "@/data/jobs";
-import { Job } from "@/types/job";
 
-// data per halaman
-const PAGE_SIZE = 9;
 
-export function getJobs(page: number, query?: string) {
-  let startIndex = (page - 1) * PAGE_SIZE;
-  let endIndex = startIndex + PAGE_SIZE; // Menggunakan PAGE_SIZE langsung
-
-  if (query) {
-    const filteredData: Job[] = jobs.filter((job: Job) =>
-      (job.name + job.location)
-        .toString()
-        .toLowerCase()
-        .includes(query.toLowerCase())
+export async function getJobs(page: number, query?: string) {
+  try {
+    const res = await fetch(
+      `http://localhost:3000/api/jobs?page=${page}&query=${query}`
     );
-    const datas: Job[] = filteredData.slice(startIndex, endIndex);
-    return datas;
-  } else {
-    const datas: Job[] = jobs.slice(startIndex, endIndex);
-    return datas;
+    return res.json();
+  } catch (error) {
+    throw new Error("something error");
   }
 }

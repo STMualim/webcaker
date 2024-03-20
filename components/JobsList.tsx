@@ -8,20 +8,8 @@ type JobsListProps = {
   query?: string;
 };
 
-export async function getData({ currentPage, query }: JobsListProps) {
-  try {
-    const res = await fetch(
-      `http://localhost:3000/api/jobs?page=${currentPage}&query=${query}`
-    );
-    return res.json();
-  } catch (error) {
-    throw new Error("something error");
-  }
-}
-
 export default async function JobsList({ currentPage, query }: JobsListProps) {
-  console.log(query);
-  const datas = await getData({ currentPage, query });
+  const datas = await getJobs(currentPage, query);
   if (datas.length === 0) {
     return <p>Job Not Found!</p>;
   }

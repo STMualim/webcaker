@@ -1,6 +1,4 @@
-"use client";
 import React from "react";
-import { useParams } from "next/navigation";
 import { IoLocation, IoTime, IoArrowBack } from "react-icons/io5";
 import Link from "next/link";
 import { getJobById } from "@/utils/getJobById";
@@ -8,18 +6,8 @@ import { formattedDate } from "@/utils/formattedDate";
 import { formattedCurrency } from "@/utils/formatCurrency";
 import { Job } from "@/types/job";
 
-export async function getData(id: string) {
-  try {
-    const res = await fetch(`http://localhost:3000/api/job/${id}`)
-    return res.json()
-  } catch (error) {
-    throw new Error("something error");
-  }
-}
-
-const JobDetailPage = async ({params} : {params: {id: string}}) => {
-
-  const job: Job | undefined = await getData(params.id.toString())
+const JobDetailPage = async ({ params }: { params: { id: string } }) => {
+  const job: Job | undefined = await getJobById(params.id.toString())
 
   return (
     <main className="pt-20">
