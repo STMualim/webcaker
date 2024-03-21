@@ -4,7 +4,7 @@ import { getJobs } from "@/utils/getJobs";
 import { Job } from "@/types/job";
 
 type JobsListProps = {
-  currentPage: number;
+  currentPage?: number;
   query?: string;
 };
 

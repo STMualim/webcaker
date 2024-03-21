@@ -12,7 +12,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
 import { IoArrowRedo } from "react-icons/io5";
 
-const BASE_URL = process.env.BASE_URL;
 
 export default function ShareButtons({
   id,
@@ -21,6 +20,7 @@ export default function ShareButtons({
   id: any;
   title: string;
 }) {
+  const url = "https://caker.vercel.app"
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -32,18 +32,18 @@ export default function ShareButtons({
         <p className="mb-2">Share job : </p>
         <div className="flex items-center gap-2">
           <div>
-            <TwitterShareButton url={`${BASE_URL}/job/${id}`} title={title}>
+            <TwitterShareButton url={`${url}/job/${id}`} title={title}>
               <XIcon size={32} round />
             </TwitterShareButton>
           </div>
           <WhatsappShareButton
-            url={`${BASE_URL}/job/${id}`}
+            url={`${url}/job/${id}`}
             title={title}
-            separator="CAKER.ID : "
+            separator=" CAKER.ID : "
           >
             <WhatsappIcon size={32} round />
           </WhatsappShareButton>
-          <TelegramShareButton url={`${BASE_URL}/job/${id}`} title={title}>
+          <TelegramShareButton url={`${url}/job/${id}`} title={title}>
             <TelegramIcon size={32} round />
           </TelegramShareButton>
         </div>
