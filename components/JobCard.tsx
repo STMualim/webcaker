@@ -5,12 +5,11 @@ import Link from "next/link";
 import { formattedCurrency } from "@/utils/formatCurrency";
 import { formattedDate } from "@/utils/formattedDate";
 import { Job } from "@/types/job";
-import { WhatsappIcon, WhatsappShareButton } from "react-share";
 import ShareButtons from "./ShareButtons";
 
 export default function JobCard({ job }: { job: Job }) {
   return (
-    <div className="px-5 border-2 rounded-md mt-2 block shadow-lg pt-4 mb-4 md:mb-0 bg-slate-50 hover:scale-105 transition-all duration-200 dark:bg-gray-800">
+    <div className="px-5 border-2 rounded-md mt-2 block shadow-lg pt-4 mb-4 md:mb-0 bg-slate-50 dark:bg-gray-800">
       <Link scroll href={`job/${job.id}`}>
         <div className="flex gap-2">
           <div className="w-3/12">

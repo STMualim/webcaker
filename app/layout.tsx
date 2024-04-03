@@ -4,8 +4,12 @@ import { poppins } from "../config/fonts";
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('http://localhost:3000'),
   title: "Cari Kerja App",
   description: "Cari kerja mudah dimana aja!!!",
+  openGraph: {
+    images: '/banner.png',
+  },
 };
 
 export default function RootLayout({
