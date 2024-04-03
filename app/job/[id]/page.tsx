@@ -7,6 +7,28 @@ import { formattedCurrency } from "@/utils/formatCurrency";
 import { Job } from "@/types/job";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import type { Metadata, ResolvingMetadata } from 'next'
+ 
+type Props = {
+  params: { id: string }
+}
+ 
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const id = params.id
+  const job = await getJobById(id)
+  const previousImages = (await parent).openGraph?.images || []
+ 
+  return {
+    title: `Lowongan kerja ${job.name}`,
+    description: job.description
+    // openGraph: {
+    //   images: ['/some-specific-page-image.jpg', ...previousImages],
+    // },
+  }
+}
 
 const JobDetailPage = async ({ params }: { params: { id: string } }) => {
   const job: Job | undefined = await getJobById(params.id.toString());
