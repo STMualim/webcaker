@@ -8,7 +8,7 @@ import {
 
 export default function JobsByType() {
   return (
-    <div className="my-4">
+    <div>
       <Select>
         <SelectTrigger>
           <SelectValue placeholder="Tipe Pekerjaan" />

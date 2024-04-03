@@ -8,7 +8,7 @@ import {
   
   export default function JobsBySalary() {
     return (
-      <div className="my-4">
+      <div>
         <Select>
           <SelectTrigger>
             <SelectValue placeholder="Salary" />

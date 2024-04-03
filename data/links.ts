@@ -1,22 +1,22 @@
 export const navLinks = [
   {
     id: 1,
-    name: "Beranda",
+    name: "Home",
     href: "/"
   },
   {
     id: 2,
-    name: "Kerja Sama",
-    href: "/kerja-sama"
+    name: "Docs",
+    href: "/docs"
   },
   {
     id: 3,
-    name: "Donasi",
-    href: "/donasi"
+    name: "Hire Me",
+    href: "/hire-me"
   },
   {
     id: 4,
-    name: "Tentang Kami",
-    href: "/tentang-kami"
+    name: "Give me a coffee ☕",
+    href: "/donation"
   },
 ];

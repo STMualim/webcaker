@@ -14,7 +14,7 @@ export default async function JobsList({ currentPage, query }: JobsListProps) {
     return <p>Job Not Found!</p>;
   }
   return (
-    <div className="md:grid-cols-2 md:grid lg:grid-cols-3 md:gap-4">
+    <div className="md:grid-cols-2 md:grid lg:grid-cols-3 md:gap-4 mt-5 lg:mt-2">
       {datas.map((job: Job) => (
         <JobCard key={job.id} job={job} />
       ))}

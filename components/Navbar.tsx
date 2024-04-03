@@ -7,6 +7,7 @@ import { MenuLinks } from "@/types/menu-links";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import { navLinks } from "@/data/links";
+import { ModeToggle } from "./toggle-mode";
 
 export default function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
@@ -14,7 +15,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`flex justify-between items-center py-3 fixed top-0 left-0 bg-white w-full px-[5%] shadow-sm md:shadow-none md:px-[10%] z-50`}
+      className={`bg-slate-50 dark:bg-gray-900 fixed top-0 z-50 flex justify-between items-center py-2 w-full left-0 px-5 md:px-[10%]`}
     >
       <Logo />
       <div className="flex items-center gap-2">
@@ -25,8 +26,8 @@ export default function Navbar() {
             return (
               <Link
                 className={` ${
-                  active ? "font-semibold text-teal-900" : "font-normal"
-                } text-sm hover:scale-105 duration-200 hover:text-teal-800 text-gray-800`}
+                  active ? "font-semibold text-teal-900 dark:text-slate-200" : "font-normal"
+                } text-sm hover:scale-105 duration-200 hover:text-teal-800 text-gray-800 dark:text-slate-200`}
                 key={link.id}
                 href={link.href}
               >
@@ -35,11 +36,12 @@ export default function Navbar() {
             );
           })}
         </div>
+        <ModeToggle />
         <div
           className="hover-icon duration-200 md:hidden"
           onClick={() => setOpen(!open)}
         >
-          <HiMenu size={25} />
+          <HiMenu className="" size={25} />
         </div>
       </div>
 

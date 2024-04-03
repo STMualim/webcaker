@@ -21,7 +21,7 @@ export default function Search() {
   }, 300);
 
   return (
-    <div className="flex w-full max-w-xs items-center space-x-2 my-4">
+    <div>
       <Input
         type="text"
         placeholder="Search..."

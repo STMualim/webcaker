@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { poppins } from "../config/fonts";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "Cari Kerja App",
@@ -16,12 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <div className={`${poppins.className} bg-white px-[5%] md:px-[8%] lg:px-[10%]`}>
-          <Navbar />
-          {children}
-          <Footer />
-        </div>
+      <body className={`${poppins.className}`}>
+        <ThemeProvider
+          attribute="class"
+          disableTransitionOnChange
+        >
+            {children}
+        </ThemeProvider>
       </body>
     </html>
   );
